@@ -11,7 +11,7 @@ dashboard_tabs = st.tabs(dashboard_types)
 for dash_tab, dash_type in zip(dashboard_tabs, dashboard_types):
     with dash_tab:
         report_path = os.path.join(base_dir, dash_type)
-        report_files = sorted([f for f in os.listdir(report_path) if f.endswith(".html")])
+        report_files = sorted([f for f in os.listdir(report_path) if f.endswith(".html")], reverse=True)
         sub_tab_names = [os.path.splitext(f)[0] for f in report_files]
 
         if not report_files:
