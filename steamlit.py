@@ -22,4 +22,4 @@ for dash_tab, dash_type in zip(dashboard_tabs, dashboard_types):
                 with sub_tab:
                     with open(os.path.join(report_path, report_file), "r", encoding="utf-8") as f:
                         html_content = f.read()
-                    st.components.v1.html(html_content, height=2000,  width=12000, scrolling=True)
+                    st.components.v1.html(html_content, height=1000,  width=1200, scrolling=True)
