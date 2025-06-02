@@ -251,16 +251,36 @@ def show_alerts_dashboard():
 
 # --- LOGIN ---
 def login():
-    st.title("🔐 Login")
-    username = st.text_input("Username")
-    password = st.text_input("Password", type="password")
-    if st.button("Login"):
-        if username == "admin" and password == "123":
+    st.image("https://miro.medium.com/v2/resize:fit:485/1*-dHq3kt9VaBxhFr7ACmOFw.png", width=150)
+    st.title("🚀 Model Monitoring Dashboard")
+    st.subheader("🔐 Log in to access the dashboard")
+
+    # Sử dụng st.form để nhóm các input và button lại
+    with st.form(key="login_form"):
+        username = st.text_input("Username", value="", placeholder="Input your username")
+        password = st.text_input("Password", type="password")
+        submit_button = st.form_submit_button("Log In")
+    
+    # Khu vực hiển thị thông báo
+    message_placeholder = st.empty()
+
+    if submit_button:
+        # Kiểm tra thông tin đăng nhập hardcode
+        correct_username = "admin"
+        correct_password = "123"
+
+        if username == correct_username and password == correct_password:
             st.session_state["logged_in"] = True
-            st.success("Login successful!")
-            st.rerun()
+            message_placeholder.success("Login successful! Welcome to the dashboard.")
+            time.sleep(1) # Tạm dừng 1 giây để người dùng thấy thông báo
+            st.rerun() 
         else:
-            st.error("Invalid username or password. Please try again.")
+            message_placeholder.error("Invalid username or password. Please try again.")
+
+    st.markdown("---")
+    st.markdown("<small>Application version: v1.0.0</small>", unsafe_allow_html=True)
+   
+
 
 # ---------- DASHBOARD ----------
 def show_dashboard():
