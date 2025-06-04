@@ -1,2 +1,2 @@
-streamlit run steamlit.py
+streamlit run app.py
 pip install streamlit
